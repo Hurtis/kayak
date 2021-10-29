@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hra Kajak na rieke</title>
+    <meta
+      name="description"
+      content="Jednoduchá 2D hra Kajak na rieke. Vyhýbaj sa prekážkam a zbieraj mince."
+    />
+    <meta name="keywords" content="hra, kajak, rieka" />
+    <meta name="author" content="Jozef Hurtis" />
+    <meta property="og:title" content="Hra Kajak" />
+    <meta property="og:locale" content="sk_SK" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kajak.hurtis.sk" />
+    <meta
+      property="og:description"
+      content="Jednoduchá 2D hra Kajak na rieke. Vyhýbaj sa prekážkam a zbieraj mince."
+    />
+    <link rel="stylesheet" href="css/style.css?v=2" />
+  </head>
+  <body>
+    <div class="game">
+      <div class="scoreboard">
+        <h2>score: <span id="score"></span></h2>
+        <h2>level: <span id="level"></span></h2>
+      </div>
+      <canvas id="canvas"> </canvas>
+    </div>
+    <div class="control">
+      <a id="controlButton" href="#">start</a>
+    </div>
+    <script src="js/river.js"></script>
+    <script src="js/ships.js"></script>
+    <script src="js/pontons.js"></script>
+    <script src="js/buoys.js"></script>
+    <script src="js/wins.js"></script>
+    <script src="js/kayak.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

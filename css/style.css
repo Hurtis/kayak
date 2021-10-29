@@ -1,0 +1,46 @@
+* {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ededed;
+}
+
+h2 {
+  color: #666;
+  font-size: 1.3rem;
+  width: 50%;
+}
+canvas {
+  border: 5px solid #888;
+  border-radius: 40px;
+}
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.game,
+.control {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.control a {
+  padding: 8px 15px;
+  font-size: 1;
+  color: #666;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #fef9ed;
+  border: 1px solid #666;
+  border-radius: 5px;
+}
