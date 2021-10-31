@@ -60,6 +60,99 @@ function keyPush(event) {
   }
 }
 
+const elemLeft = canvas.offsetLeft + canvas.clientLeft,
+  elemTop = canvas.offsetTop + canvas.clientTop;
+
+// Add event listener for `click` events.
+canvas.addEventListener(
+  "click",
+  function (event) {
+    var x = event.pageX,
+      y = event.pageY;
+    if (game) {
+      //up
+      if (
+        x > elemLeft + canvas.width / 3 &&
+        x < elemLeft + (canvas.width * 2) / 3 &&
+        y > elemTop &&
+        y < elemTop + canvas.height / 3
+      ) {
+        kayak.y -= speed * 2;
+      }
+      //down
+      if (
+        x > elemLeft + canvas.width / 3 &&
+        x < elemLeft + (canvas.width * 2) / 3 &&
+        y > elemTop + (canvas.height * 2) / 3 &&
+        y < elemTop + canvas.height
+      ) {
+        kayak.y += speed;
+      }
+      //left
+      if (
+        x > elemLeft &&
+        x < elemLeft + canvas.width / 2 &&
+        y > elemTop + canvas.height / 3 &&
+        y < elemTop + (canvas.height * 2) / 3
+      ) {
+        kayak.x -= speed * 2;
+      }
+      //right
+      if (
+        x < elemLeft + canvas.width &&
+        x > elemLeft + canvas.width / 2 &&
+        y > elemTop + canvas.height / 3 &&
+        y < elemTop + (canvas.height * 2) / 3
+      ) {
+        kayak.x += speed * 2;
+      }
+      //up - left
+      if (
+        x > elemLeft &&
+        x < elemLeft + canvas.width / 3 &&
+        y > elemTop &&
+        y < elemTop + canvas.height / 3
+      ) {
+        kayak.y -= speed * 2;
+        kayak.x -= speed * 2;
+      }
+
+      //up - right
+      if (
+        x > elemLeft + (canvas.width * 2) / 3 &&
+        x < elemLeft + canvas.width &&
+        y > elemTop &&
+        y < elemTop + canvas.height / 3
+      ) {
+        kayak.y -= speed * 2;
+        kayak.x += speed * 2;
+      }
+
+      //down - right
+      if (
+        x > elemLeft + (canvas.width * 2) / 3 &&
+        x < elemLeft + canvas.width &&
+        y > elemTop + (canvas.height * 2) / 3 &&
+        y < elemTop + canvas.height
+      ) {
+        kayak.y += speed * 2;
+        kayak.x += speed * 2;
+      }
+      //down - left
+      if (
+        x > elemLeft &&
+        x < elemLeft + canvas.width / 3 &&
+        y > elemTop + (canvas.height * 2) / 3 &&
+        y < elemTop + canvas.height
+      ) {
+        kayak.y += speed * 2;
+        kayak.x -= speed * 2;
+      }
+    }
+  },
+  false
+);
+
 // ----------------------//
 // ----GAME FUNCTIONS----//
 // ----------------------//
