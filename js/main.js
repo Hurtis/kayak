@@ -152,10 +152,21 @@ canvas.addEventListener(
   },
   false
 );
+// sound
+playSound = (src) => {
+  let sound = document.createElement("audio");
+  sound.src = src;
+  sound.setAttribute("preload", "auto");
+  sound.setAttribute("controls", "none");
+  sound.style.display = "none";
+  document.body.appendChild(sound);
+  sound.play();
+};
 
 // ----------------------//
 // ----GAME FUNCTIONS----//
 // ----------------------//
+
 drawStuff = () => {
   // draw river
   river.draw(canvas.width, canvas.height);
@@ -185,12 +196,15 @@ moveStuff = () => {
 };
 
 gameOver = () => {
-  game = false;
-  end = true;
-  control.innerHTML = control.innerHTML.replace("stop", "restart");
   let gameover = new Image();
   gameover.src = "./img/gameover.png";
   ctx.drawImage(gameover, 0, 0);
+  if (!end) {
+    game = false;
+    end = true;
+    control.innerHTML = control.innerHTML.replace("stop", "restart");
+    playSound("./sounds/end.mp3");
+  }
 };
 
 changeLevel = () => {
@@ -200,6 +214,7 @@ changeLevel = () => {
 };
 
 changeScore = (value) => {
+  playSound("./sounds/beep.mp3");
   score = score + value;
   scoreBoard.innerHTML = score;
   if (Math.floor(score / 10) > level) {
@@ -299,13 +314,11 @@ collisions = () => {
 // ------GAME LOOP-------//
 // ----------------------//
 gameLoop = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawStuff();
-  //collisions
-  collisions();
-  if (game === true) {
+  if (game) {
     moveStuff();
   }
+  collisions();
   requestAnimationFrame(gameLoop);
 };
 

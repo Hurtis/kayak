@@ -79,14 +79,14 @@ class Pontons {
   }
 
   moveLeft(height, stream) {
-    this.left.y = this.left.y + stream;
+    this.left.y += stream;
     if (this.left.y > height) {
       this.left.y = (this.h + this.pontonRandomDelay()) * -1;
     }
   }
 
   moveRight(height, stream) {
-    this.right.y = this.right.y + stream;
+    this.right.y += stream;
     if (this.right.y > height) {
       this.right.y = (this.h + this.pontonRandomDelay()) * -1;
     }

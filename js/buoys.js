@@ -36,7 +36,7 @@ class Buoy {
   }
   moveBuoy(height, stream) {
     // left buoy
-    this.left.y = this.left.y + stream;
+    this.left.y += stream;
     if (this.left.y + this.left.w > height) {
       this.left.y = (this.left.w + this.buoyRandomDelay()) * -1;
     }
@@ -45,7 +45,7 @@ class Buoy {
       this.left.swing_speed = this.left.swing_speed * -1;
     }
     // right buoy
-    this.right.y = this.right.y + stream;
+    this.right.y += stream;
     if (this.right.y + this.right.w > height) {
       this.right.y = (this.right.w + this.buoyRandomDelay()) * -1;
     }

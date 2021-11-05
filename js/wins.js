@@ -49,7 +49,7 @@ class Wins {
     objedct.x = this.winRandomPosition();
   }
   moveWin(name, delay, height, stream) {
-    name.y = name.y + stream;
+    name.y += stream;
     if (name.y > height) {
       this.changeWinPosition(name, delay);
     }
