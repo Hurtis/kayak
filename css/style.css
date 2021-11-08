@@ -13,12 +13,23 @@ body {
   background-color: #ededed;
 }
 
-h2 {
+.board-item {
+  margin: 10px 0;
   color: #666;
-  font-size: 1.3rem;
-  width: 50%;
+  font-size: 1.1rem;
+  width: 33.33%;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board-item img {
+  width: 18px;
+  height: 18px;
 }
 canvas {
+  vertical-align: middle;
   border: 5px solid #888;
   border-radius: 40px;
 }

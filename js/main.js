@@ -10,10 +10,13 @@ let game = false;
 let end = false;
 let score = 0;
 let level = 0;
+let lives = 3;
 let scoreBoard = document.getElementById("score");
 let levelBoard = document.getElementById("level");
+let livesBoard = document.getElementById("lives");
 scoreBoard.innerHTML = score;
 levelBoard.innerHTML = level + 1;
+livesBoard.innerHTML = lives;
 // ----------------------//
 // -----GAME CONTROL-----//
 // ----------------------//
@@ -173,6 +176,7 @@ drawStuff = () => {
   //draw wins
   wins.drawWin(wins.coin);
   wins.drawWin(wins.diamond);
+  wins.drawWin(wins.life);
   // draw kayak
   kayak.draw();
   // draw pontons
@@ -187,7 +191,8 @@ drawStuff = () => {
 
 moveStuff = () => {
   wins.moveWin(wins.coin, 5, canvas.height, stream);
-  wins.moveWin(wins.diamond, 10, canvas.height, stream);
+  wins.moveWin(wins.diamond, 20, canvas.height, stream);
+  wins.moveWin(wins.life, 30, canvas.height, stream);
   ponton.moveLeft(canvas.height, stream);
   ponton.moveRight(canvas.height, stream);
   ship.moveRightShip(canvas.height, stream);
@@ -199,11 +204,30 @@ gameOver = () => {
   let gameover = new Image();
   gameover.src = "./img/gameover.png";
   ctx.drawImage(gameover, 0, 0);
+  lives = 0;
+  livesBoard.innerHTML = lives;
   if (!end) {
     game = false;
     end = true;
     control.innerHTML = control.innerHTML.replace("stop", "restart");
     playSound("./sounds/end.mp3");
+  }
+};
+changeLives = (life) => {
+  if (life) {
+    lives += 1;
+    livesBoard.innerHTML = lives;
+    playSound("./sounds/beep.mp3");
+  } else {
+    lives -= 1;
+    if (lives <= 0) {
+      gameOver();
+    } else {
+      livesBoard.innerHTML = lives;
+      kayak.x = 167;
+      kayak.y = 200;
+      playSound("./sounds/end.mp3");
+    }
   }
 };
 
@@ -247,7 +271,7 @@ collisions = () => {
     kayak.y < ponton.left.y + ponton.h &&
     kayak.y > ponton.left.y
   ) {
-    gameOver();
+    changeLives(false);
   }
   //right ponton
   if (
@@ -255,7 +279,7 @@ collisions = () => {
     kayak.y < ponton.right.y + ponton.h &&
     kayak.y > ponton.right.y
   ) {
-    gameOver();
+    changeLives(false);
   }
   // bouys
   if (
@@ -268,7 +292,7 @@ collisions = () => {
       buoy.right.y + buoy.right.w >= kayak.y &&
       buoy.right.y - buoy.right.w <= kayak.y + kayak.h)
   ) {
-    gameOver();
+    changeLives(false);
   }
   // left ship
   if (
@@ -277,7 +301,7 @@ collisions = () => {
     kayak.y + kayak.h > ship.left.y + 10 &&
     kayak.y <= ship.left.y + ship.left.h - 10
   ) {
-    gameOver();
+    changeLives(false);
   }
   // right ship
   if (
@@ -286,7 +310,7 @@ collisions = () => {
     kayak.y + kayak.h > ship.right.y + 10 &&
     kayak.y <= ship.right.y + ship.right.h - 10
   ) {
-    gameOver();
+    changeLives(false);
   }
   // coin
   if (
@@ -305,8 +329,19 @@ collisions = () => {
     kayak.y + kayak.h > wins.diamond.y &&
     kayak.y <= wins.diamond.y + wins.diamond.h
   ) {
-    wins.changeWinPosition(wins.diamond, 10);
+    wins.changeWinPosition(wins.diamond, 15);
     changeScore(3);
+  }
+  // diamond
+  if (
+    kayak.x + kayak.w >= wins.life.x &&
+    kayak.x <= wins.life.x + wins.life.w &&
+    kayak.y + kayak.h > wins.life.y &&
+    kayak.y <= wins.life.y + wins.life.h
+  ) {
+    wins.changeWinPosition(wins.life, 30);
+    checkLifePosition();
+    changeLives(true);
   }
 };
 

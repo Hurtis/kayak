@@ -1,5 +1,12 @@
 class Wins {
   constructor() {
+    this.life = {
+      w: 20,
+      h: 20,
+      x: 90,
+      y: -1000,
+      url: "./img/lifebuoy.png",
+    };
     this.coin = {
       w: 21,
       h: 21,
@@ -52,6 +59,11 @@ class Wins {
     name.y += stream;
     if (name.y > height) {
       this.changeWinPosition(name, delay);
+    }
+  }
+  checkLifePosition() {
+    if (this.life.y === this.coin.y || this.life.y === this.diamond.y) {
+      this.life.y -= this.life.w * 2;
     }
   }
 }

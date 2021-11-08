@@ -23,8 +23,17 @@
   <body>
     <div class="game">
       <div class="scoreboard">
-        <h2>score: <span id="score"></span></h2>
-        <h2>level: <span id="level"></span></h2>
+        <div class="board-item">
+          <img src="./img/coin.png" alt="coin" />&nbsp;:&nbsp;<span
+            id="score"
+          ></span>
+        </div>
+        <div class="board-item">
+          <img src="./img/live.png" alt="heard" />&nbsp;:&nbsp;<span
+            id="lives"
+          ></span>
+        </div>
+        <div class="board-item">level:&nbsp;<span id="level"></span></div>
       </div>
       <canvas id="canvas"> </canvas>
     </div>
