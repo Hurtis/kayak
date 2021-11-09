@@ -1,3 +1,3 @@
 # Kayak
 🛶  JavaScript game
-<a href="kajak.hurtis.sk">Demo</a>
+<a href="https://kajak.hurtis.sk/">Demo</a>
