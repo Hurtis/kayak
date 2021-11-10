@@ -61,11 +61,6 @@ class Wins {
       this.changeWinPosition(name, delay);
     }
   }
-  checkLifePosition() {
-    if (this.life.y === this.coin.y || this.life.y === this.diamond.y) {
-      this.life.y -= this.life.w * 2;
-    }
-  }
 }
 
 const wins = new Wins();

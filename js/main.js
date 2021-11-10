@@ -340,7 +340,6 @@ collisions = () => {
     kayak.y <= wins.life.y + wins.life.h
   ) {
     wins.changeWinPosition(wins.life, 30);
-    checkLifePosition();
     changeLives(true);
   }
 };
