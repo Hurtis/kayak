@@ -46,6 +46,9 @@ canvas {
 }
 
 .control a {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
   padding: 8px 15px;
   font-size: 1;
   color: #666;
